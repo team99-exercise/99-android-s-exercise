@@ -11,26 +11,11 @@ public class Section extends ShowHideFormBaseObject {
   public String footer;
   public ArrayList<Row> rows = new ArrayList<>();
 
-  public int getSectionItemCount() {
-    int count = 2; //Header + footer
-
-    //Counting the number of visible rows
-    for (Row row : rows) {
-      if (row.isVisible()) count++;
-    }
-
-    return count;
-  }
-
-  public Row getRow(int position) {
-    return rows.get(position);
-  }
-
   public boolean hasTitle() {
-    return true;
+    return title != null;
   }
 
   public boolean hasFooter() {
-    return true;
+    return footer != null;
   }
 }
