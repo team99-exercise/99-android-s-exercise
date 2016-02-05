@@ -12,8 +12,8 @@ import timber.log.Timber;
  */
 public abstract class ShowHideFormBaseObject extends FormBaseObject {
   @SerializedName("visible_conditions") public ArrayList<HashMap<String, JsonElement>> visibleConditions = new ArrayList<>();
-  public transient HashMap<String, ArrayList<Row>> rowsForConditions = new HashMap<>(); //Convenient way to access rows for evaluating conditions
-  public transient ArrayList<ShowHideFormBaseObject> dependantItems = new ArrayList<>();
+  public transient HashMap<String, Row> rowsForConditions = new HashMap<>(); //Convenient way to access rows for evaluating conditions
+  public transient boolean hasDependantFormElements = false;
   //Rows/sections that are dependant on the value of this row for visibility
 
   public boolean isVisible() {
@@ -38,37 +38,18 @@ public abstract class ShowHideFormBaseObject extends FormBaseObject {
       String rowKey = entry.getKey();
       JsonElement value = entry.getValue();
 
-      ArrayList<Row> rows = rowsForConditions.get(rowKey);
-      if (rows == null) {
+      Row row = rowsForConditions.get(rowKey);
+      if (row == null || !row.value.equals(value)) {
         //Timber.d("\t" + entry + ": " + false);
         //Timber.d("\t====");
-        return false; //No rows found for this key. Condition check fails.
+        return false; //AND condition. None of them should be false
       } else {
-        //Evaluate all the rows to see if any one of them can evaluate to true
-        boolean conditionSatisfied = false;
-
-        for (Row row : rows) {
-          if (row.value.equals(value)) conditionSatisfied = true;
-        }
-
-        //Return false if none of them can evaluate to true. This is an AND clause. ALL of the conditions have to be true.
-        if (!conditionSatisfied) {
-          //Timber.d("\t" + entry + ": " + false);
-          //Timber.d("\t====");
-          return false;
-        //} else {
-          //Timber.d("\t" + entry + ": " + true);
-          //Timber.d("\t====");
-        }
+        //Timber.d("\t" + entry + ": " + true);
       }
     }
 
     //Timber.d("\tCondition is true");
     //Timber.d("\t====");
     return true;
-  }
-
-  public boolean affectsOtherRowVisibilities() {
-    return !dependantItems.isEmpty();
   }
 }
