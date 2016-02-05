@@ -8,4 +8,8 @@ import com.google.gson.JsonElement;
 public abstract class FormBaseObject {
   public String key, title;
   public JsonElement value;
+
+  @Override public String toString() {
+    return "[key=" + key + ", title=" + title + ", value=" + value + "]";
+  }
 }

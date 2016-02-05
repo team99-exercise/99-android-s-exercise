@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class RowText extends Row<String> {
   @SerializedName("multiple_line") public boolean isMultipleLine;
+  public String placeholder;
 
   @Override public String getValueForDisplay() {
     if (value.isJsonPrimitive()) {

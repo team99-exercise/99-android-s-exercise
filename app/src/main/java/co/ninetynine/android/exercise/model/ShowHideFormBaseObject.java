@@ -52,4 +52,8 @@ public abstract class ShowHideFormBaseObject extends FormBaseObject {
     //Timber.d("\t====");
     return true;
   }
+
+  @Override public String toString() {
+    return super.toString() + " [visible_conditions=" + visibleConditions + "]";
+  }
 }

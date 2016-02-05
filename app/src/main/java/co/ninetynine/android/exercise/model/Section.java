@@ -18,4 +18,14 @@ public class Section extends ShowHideFormBaseObject {
   public boolean hasFooter() {
     return footer != null;
   }
+
+  @Override public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("++ Section: " + super.toString() + "[footer=" + footer + "]\n");
+    for (Row row : rows) {
+      sb.append(row).append("\n");
+    }
+
+    return sb.toString();
+  }
 }

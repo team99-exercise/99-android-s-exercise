@@ -5,10 +5,13 @@ package co.ninetynine.android.exercise.model;
  */
 public abstract class Row<T> extends ShowHideFormBaseObject {
   public String type;
-  public String placeholder;
 
   public abstract String getValueForDisplay();
   public abstract void saveChosenValue(T valueToSave) throws ValidationException;
+
+  @Override public String toString() {
+    return "Row: " + super.toString() + "[type=" + type + "]";
+  }
 
   //Thrown if there's a validation error. Will be populated with an error message. Can be retrieved by calling exception.getMessage()
   public static class ValidationException extends Exception {
