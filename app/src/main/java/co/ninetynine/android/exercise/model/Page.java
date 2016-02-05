@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import timber.log.Timber;
 
 /**
  * Created by suresh on 27/11/15.
@@ -65,12 +66,9 @@ public class Page extends FormBaseObject {
     }
   }
 
-  @Override public String toString() {
-    StringBuilder sb = new StringBuilder();
+  public void logPage() {
     for (Section section : sections) {
-      sb.append(section).append("\n");
+      section.logSection();
     }
-
-    return sb.toString();
   }
 }

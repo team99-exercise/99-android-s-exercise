@@ -3,6 +3,7 @@ package co.ninetynine.android.exercise.model;
 import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.HashMap;
+import timber.log.Timber;
 
 /**
  * Created by suresh on 27/11/15.
@@ -19,13 +20,10 @@ public class Section extends ShowHideFormBaseObject {
     return footer != null;
   }
 
-  @Override public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("++ Section: " + super.toString() + "[footer=" + footer + "]\n");
+  public void logSection() {
+    Timber.d("++ Section: " + super.toString() + "[footer=" + footer + "]\n");
     for (Row row : rows) {
-      sb.append(row).append("\n");
+      Timber.d("\t-- " + row);
     }
-
-    return sb.toString();
   }
 }
