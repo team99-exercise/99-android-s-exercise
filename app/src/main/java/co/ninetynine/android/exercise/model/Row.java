@@ -3,7 +3,7 @@ package co.ninetynine.android.exercise.model;
 /**
  * Created by suresh on 14/12/15.
  */
-public abstract class Row<T> extends ShowHideFormBaseObject {
+public abstract class Row<T> extends FormBaseObject {
   public String type;
 
   public abstract String getValueForDisplay();

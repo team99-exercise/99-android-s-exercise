@@ -7,7 +7,6 @@ import co.ninetynine.android.exercise.model.RowCheckbox;
 import co.ninetynine.android.exercise.model.RowRadio;
 import co.ninetynine.android.exercise.model.RowText;
 import co.ninetynine.android.exercise.model.Section;
-import co.ninetynine.android.exercise.model.ShowHideFormBaseObject;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -17,11 +16,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import timber.log.Timber;
 
 /**
@@ -54,37 +50,12 @@ public class PageSerializer implements JsonDeserializer<Page>, JsonSerializer<Pa
       page.sections.add(deserializeSection(context, element.getAsJsonObject(), page.rowMap));
     }
 
-    //Populating transient objects
-    for (Section section : page.sections) {
-      //Populating row objects for condition checks
-      populateConditionCheckRows(section, page);
-
-      for (Row row : section.rows) {
-        //Populating row objects for condition checks
-        populateConditionCheckRows(row, page);
-      }
-    }
-
     return page;
-  }
-
-  private void populateConditionCheckRows(ShowHideFormBaseObject object, Page page) {
-    if (!object.visibleConditions.isEmpty()) {
-      for (HashMap<String, JsonElement> condition : object.visibleConditions) {
-        for (String conditionRowKey : condition.keySet()) {
-          Row conditionRow = page.rowMap.get(conditionRowKey);
-          if (conditionRow != null) { //There can be cases where a row is not found. Can happen when a rule applies to a row that is not available in the current form template
-            conditionRow.hasDependantFormElements = true;
-            object.rowsForConditions.put(conditionRowKey, conditionRow);
-          }
-        }
-      }
-    }
   }
 
   private Section deserializeSection(JsonDeserializationContext context, JsonObject obj, HashMap<String, Row> rowMap) {
     Section section = new Section();
-    deserializeShowHideFormBaseObject(context, section, obj);
+    deserializeFormBaseObject(section, obj);
 
     //Footer
     JsonElement footer = obj.get("footer");
@@ -114,30 +85,12 @@ public class PageSerializer implements JsonDeserializer<Page>, JsonSerializer<Pa
       Row row = context.deserialize(obj, rowClassType);
 
       //Reinitialising null values
-      if (row.visibleConditions == null) row.visibleConditions = new ArrayList<>();
       if (row.value == null) row.value = JsonNull.INSTANCE;
 
       return row;
     } else { //Unidentified row type
       Timber.e("Unsupported form row type: " + type);
       return null;
-    }
-  }
-
-  private void deserializeShowHideFormBaseObject(JsonDeserializationContext context,
-        ShowHideFormBaseObject formObject, JsonObject obj) {
-    deserializeFormBaseObject(formObject, obj);
-
-    //Visible conditions parsing
-    if (obj.has("visible_conditions")) {
-      formObject.visibleConditions = context.deserialize(
-          obj.get("visible_conditions"),
-          new TypeToken<ArrayList<HashMap<String, JsonElement>>>(){}.getType()
-      );
-    }
-
-    if (formObject.visibleConditions == null) { //Reinitializing visible conditions array list if it's null
-      formObject.visibleConditions = new ArrayList<>();
     }
   }
 
@@ -170,7 +123,7 @@ public class PageSerializer implements JsonDeserializer<Page>, JsonSerializer<Pa
   }
 
   private JsonObject serializeSection(Section src, JsonSerializationContext context) {
-    JsonObject sectionObj = serializeShowHideFormBaseObject(src, context);
+    JsonObject sectionObj = serializeFormBaseObject(src);
 
     //Footer
     sectionObj.addProperty("footer", src.footer);
@@ -183,15 +136,6 @@ public class PageSerializer implements JsonDeserializer<Page>, JsonSerializer<Pa
     sectionObj.add("rows", rows);
 
     return sectionObj;
-  }
-
-  private JsonObject serializeShowHideFormBaseObject(ShowHideFormBaseObject src, JsonSerializationContext context) {
-    JsonObject object = serializeFormBaseObject(src);
-
-    //Visible conditions
-    object.add("visible_conditions", context.serialize(src.visibleConditions));
-
-    return object;
   }
 
   private JsonObject serializeFormBaseObject(FormBaseObject src) {

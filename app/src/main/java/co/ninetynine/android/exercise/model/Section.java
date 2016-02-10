@@ -8,7 +8,7 @@ import timber.log.Timber;
 /**
  * Created by suresh on 27/11/15.
  */
-public class Section extends ShowHideFormBaseObject {
+public class Section extends FormBaseObject {
   public String footer;
   public ArrayList<Row> rows = new ArrayList<>();
 
