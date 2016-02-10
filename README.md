@@ -55,6 +55,8 @@ Create a functional user interface for a given form template. Users should be ab
 
 The objective of this exercise is to assess your understanding of the requirements and your approach. Building a bare bones, functional UI is sufficient! Don't worry too much about things like padding, text size/colour etc. (however tempting it may be!)
 
+**Use the [`part-1`](https://github.com/team99/99-android-exercise/tree/part-1) branch for this exercise.**
+
 ### Part 2: Showing/Hiding Sections
 Sections can be hidden based on a set of rules. This allows us to hide parts of our UI until the user selects certain options. We define the rules in terms of the values that rows can have. If a section has rules defined, it'll be hidden by default. The section will become visible once the rows have the values that we want.
 
