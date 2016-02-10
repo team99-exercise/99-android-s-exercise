@@ -58,11 +58,6 @@ public class PageSerializer implements JsonDeserializer<Page>, JsonSerializer<Pa
     for (Section section : page.sections) {
       //Populating row objects for condition checks
       populateConditionCheckRows(section, page);
-
-      for (Row row : section.rows) {
-        //Populating row objects for condition checks
-        populateConditionCheckRows(row, page);
-      }
     }
 
     return page;
@@ -114,7 +109,6 @@ public class PageSerializer implements JsonDeserializer<Page>, JsonSerializer<Pa
       Row row = context.deserialize(obj, rowClassType);
 
       //Reinitialising null values
-      if (row.visibleConditions == null) row.visibleConditions = new ArrayList<>();
       if (row.value == null) row.value = JsonNull.INSTANCE;
 
       return row;

@@ -25,8 +25,6 @@ public class Page extends FormBaseObject {
       if (!section.isVisible()) continue; //Ignore hidden sections
 
       for (Row row : section.rows) {
-        if (!row.isVisible()) continue; //Ignore hidden rows
-
         if (!row.value.isJsonNull()) { //Add this row to the payload if the value is NOT NULL
           object.add(row.key, row.value);
         }

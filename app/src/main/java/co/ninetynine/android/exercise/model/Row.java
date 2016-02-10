@@ -3,8 +3,9 @@ package co.ninetynine.android.exercise.model;
 /**
  * Created by suresh on 14/12/15.
  */
-public abstract class Row<T> extends ShowHideFormBaseObject {
+public abstract class Row<T> extends FormBaseObject {
   public String type;
+  public transient boolean hasDependantFormElements = false;
 
   public abstract String getValueForDisplay();
   public abstract void saveChosenValue(T valueToSave) throws ValidationException;
