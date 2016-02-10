@@ -18,7 +18,7 @@ Sections can consist of rows of different types. These are the types that are to
 
 The form templates are available as JSON files in the `/assets` folder. This is the format of the JSON document:
 
-```json
+```javascript
 "sections": [{ //Array of sections to be displayed
 
 		"title": "What are you looking for?", //Title for the section (Optional)
@@ -60,7 +60,7 @@ Sections can be hidden based on a set of rules. This allows us to hide parts of 
 
 Add support for showing and hiding sections based on the rules specified. The rules are specified in the section object in this format:
 
-```json
+```javascript
 Section object:
 {
     "title": "What are you looking for?",
