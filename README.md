@@ -76,3 +76,5 @@ Section object:
 ```
 
 The parser and model classes supplied will parse and evaluate these rules for you. You can call the `isVisible()` method in the `Section` object to know whether the section should be displayed. The `Row` object also contains a boolean field called `hasDependantFormElements` that will tell you if the value of a row can affect the visibility of any sections.
+
+**Use the [`part-2`](https://github.com/team99/99-android-exercise/tree/part-2) branch for this exercise.**
