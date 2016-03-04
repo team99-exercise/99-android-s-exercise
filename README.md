@@ -16,7 +16,7 @@ Sections can consist of rows of different types. These are the types that are to
 - **Text:** This row allows the user to input text
 - **Checkbox:** This row allows the user to toggle an option on or off
 
-The form templates are available as JSON files in the `/assets` folder. This is the format of the JSON document:
+Here's a sample of what our JSON form document looks like:
 
 ```javascript
 "sections": [{ //Array of sections to be displayed
@@ -46,8 +46,11 @@ The form templates are available as JSON files in the `/assets` folder. This is 
 ]
 ```
 
+
 ### JSON Parsers & Model Classes
-We have some existing code you can make use of. There's a parser to make sense of the content in the JSON form templates and a set of model classes to represent that information. You can use this code as a start point for your work.
+We have some existing code you can make use of to encapsulate the JSON data described above. There's a parser to make sense of the content in the JSON form templates and a set of model classes to represent that information. You can use this code as a start point for your work.
+
+Call the `getSampleForm(Context context)` method in the `Util` class to get a `Page` object and get going! The `Page` object contains a list of `Section` objects, which each contain a list of `Row` objects. The `Row` class is abstract. Each row type (text, checkbox etc.) has it's own subclass/implementation of the `Row` class. For e.g. the `RowText` class represents a text row, and a `RowRadio` class represents a radio button row.
 
 ## Exercise
 ### Part 1: Functional UI
@@ -75,4 +78,24 @@ Section object:
 }
 ```
 
+For e.g., in the code snippet above, we see that a row has a visible condition based on the value in the row with key `listing_type`. This means that this row will be hidden by default until the row with key `listing_type` contains the value `rent`. The `value` for a row is stored in the form of a JsonElement in the `Row` class.
+
 The parser and model classes supplied will parse and evaluate these rules for you. You can call the `isVisible()` method in the `Section` object to know whether the section should be displayed. The `Row` object also contains a boolean field called `hasDependantFormElements` that will tell you if the value of a row can affect the visibility of any sections.
+
+**Use the [`part-2`](https://github.com/team99/99-android-exercise/tree/part-2) branch for this exercise.**
+
+## Getting Startedy
+We require candidates to attempt part-1 of the challenge. If you've successfully completed part-1 and have some spare time on your hands, you're welcome to proceed and attempt part-2 of the exercise! :smiley:
+
+Most of the code provided as part of this challenge relies heavily on Gson, Google's JSON parsing library. You can find more information about Gson [here](https://github.com/google/gson).
+
+Few things to keep in mind:
+
+- It'll be good to commit your work frequently so that we can follow your progress and see how you worked through this problem.
+- Having a slick/polished would nice, but not the main focus of this exercise! We would just like to understand more about your approach.
+
+### Instructions
+1. Create your own fork of this repository to get started.
+2. Remember to use the branch corresponding to the part of the exercise you're working on. (part-1 for Part 1 and part-2 for part 2)
+3. Once you've finished the challenge, grant us access to the fork and send us an APK file that can be installed on devices.
+4. Add in any additional instructions we might need to setup the codebase on our local machines.

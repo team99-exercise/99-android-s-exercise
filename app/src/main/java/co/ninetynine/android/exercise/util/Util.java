@@ -13,13 +13,18 @@ import java.io.InputStream;
  */
 public class Util {
 
+  public static Page getSampleForm(Context context) {
+    String jsonString = loadStringFromFile(context, "form.json");
+    return createGsonInstance().fromJson(jsonString, Page.class);
+  }
+
   /**
    * Helper method to load a string from a file
    * @param context
    * @param filepath Path to the file
    * @return
    */
-  public static String loadStringFromFile(Context context, String filepath) {
+  private static String loadStringFromFile(Context context, String filepath) {
     String json = null;
     try {
       InputStream is = context.getAssets().open(filepath);
