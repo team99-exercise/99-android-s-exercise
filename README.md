@@ -84,7 +84,7 @@ The parser and model classes supplied will parse and evaluate these rules for yo
 
 **Use the [`part-2`](https://github.com/team99/99-android-exercise/tree/part-2) branch for this exercise.**
 
-## Getting Startedy
+## Getting Started
 We require candidates to attempt part-1 of the challenge. If you've successfully completed part-1 and have some spare time on your hands, you're welcome to proceed and attempt part-2 of the exercise! :smiley:
 
 Most of the code provided as part of this challenge relies heavily on Gson, Google's JSON parsing library. You can find more information about Gson [here](https://github.com/google/gson).
