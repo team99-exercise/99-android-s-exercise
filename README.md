@@ -94,6 +94,11 @@ Few things to keep in mind:
 - It'll be good to commit your work frequently so that we can follow your progress and see how you worked through this problem.
 - Having a slick/polished would nice, but not the main focus of this exercise! We would just like to understand more about your approach.
 
+
+
+### Language
+- Please use Kotlin rather than Java
+
 ### Instructions
 1. Create your own fork of this repository to get started.
 2. Remember to use the branch corresponding to the part of the exercise you're working on. (part-1 for Part 1 and part-2 for part 2)
