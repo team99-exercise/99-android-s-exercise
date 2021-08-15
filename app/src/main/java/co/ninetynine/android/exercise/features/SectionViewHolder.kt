@@ -43,8 +43,6 @@ class SectionViewHolder(private val itemBinding: ItemSectionBinding) :
             itemBinding.tvFooter.visibility = View.VISIBLE
             itemBinding.tvFooter.text = item.footer
         }
-
         item.rows?.let { rowRecyclerAdapter?.setDataList(it) }
-
     }
 }

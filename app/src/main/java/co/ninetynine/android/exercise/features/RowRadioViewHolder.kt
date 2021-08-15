@@ -3,10 +3,13 @@ package co.ninetynine.android.exercise.features
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import co.ninetynine.android.exercise.base.BaseViewHolder
 import co.ninetynine.android.exercise.databinding.ItemRowRadioBinding
 import co.ninetynine.android.exercise.model.Row
+import co.ninetynine.android.exercise.model.event.VisibilityEvent
+import org.greenrobot.eventbus.EventBus
 
 
 class RowRadioViewHolder(private val itemBinding: ItemRowRadioBinding) :
@@ -38,5 +41,24 @@ class RowRadioViewHolder(private val itemBinding: ItemRowRadioBinding) :
         itemBinding.spnOptions.setSelection(
             item.options?.map { it.value }?.indexOf(item.value.toString()) ?: 0
         )
+        itemBinding.spnOptions.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    item.value = item.options?.get(position)?.value
+                    EventBus.getDefault().post(
+                        VisibilityEvent(
+                            item.key ?: "",
+                            item.options?.get(position)?.value ?: ""
+                        )
+                    )
+                }
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+            }
     }
 }

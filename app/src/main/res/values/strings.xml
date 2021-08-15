@@ -2,5 +2,9 @@
     <string name="app_name">NinetyNine Android Exercise</string>
     <!--Error-->
     <string name="error_empty_sections">Oops! It\'s empty here.</string>
+    <!--Label-->
+    <string name="label_close">Close</string>
+    <string name="label_reset">Reset</string>
+    <string name="label_search">Search</string>
 
 </resources>

@@ -4,5 +4,6 @@ data class Section(
     val title: String?,
     val footer: String?,
     val visible_conditions: List<HashMap<String, String>?>?,
-    val rows: List<Row>?
+    val rows: List<Row>?,
+    var isVisible: Boolean = true
 )

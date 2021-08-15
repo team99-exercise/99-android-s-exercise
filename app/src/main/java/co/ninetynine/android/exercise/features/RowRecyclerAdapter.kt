@@ -4,7 +4,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.ninetynine.android.exercise.model.Row
 
-class RowRecyclerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RowRecyclerAdapter() :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val itemList = ArrayList<Row>()
 

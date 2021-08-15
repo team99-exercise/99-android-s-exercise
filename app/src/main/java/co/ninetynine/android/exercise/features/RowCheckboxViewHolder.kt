@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import co.ninetynine.android.exercise.base.BaseViewHolder
 import co.ninetynine.android.exercise.databinding.ItemRowCheckboxBinding
 import co.ninetynine.android.exercise.model.Row
+import co.ninetynine.android.exercise.model.event.VisibilityEvent
+import org.greenrobot.eventbus.EventBus
+
 
 class RowCheckboxViewHolder(private val itemBinding: ItemRowCheckboxBinding) :
     BaseViewHolder(itemBinding.root) {
@@ -20,5 +23,9 @@ class RowCheckboxViewHolder(private val itemBinding: ItemRowCheckboxBinding) :
     fun bind(item: Row) {
         itemBinding.cbToggle.text = item.title
         itemBinding.cbToggle.isChecked = item.value == true
+        itemBinding.cbToggle.setOnCheckedChangeListener { _, isChecked ->
+            item.value = isChecked
+            EventBus.getDefault().post(VisibilityEvent(item.key ?: "", isChecked))
+        }
     }
 }

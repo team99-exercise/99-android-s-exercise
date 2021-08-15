@@ -24,4 +24,8 @@ class SectionRecyclerAdapter() : RecyclerView.Adapter<SectionViewHolder>() {
         holder.bind(itemList[position])
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
 }
