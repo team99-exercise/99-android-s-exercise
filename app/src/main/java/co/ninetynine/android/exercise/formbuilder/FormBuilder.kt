@@ -5,12 +5,17 @@ import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.CheckBox
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.TextView
 import co.ninetynine.android.exercise.model.*
 
 
 class FormBuilder(private val context: Context, private val linearLayout: LinearLayout) {
+
+    private val answerMap: HashMap<String, Any> = HashMap()
 
     fun build(page: Page?) {
         for (section in page?.sections!!) {
@@ -18,6 +23,7 @@ class FormBuilder(private val context: Context, private val linearLayout: Linear
             addToLinearLayout(buildHeader(section))
 
             for (row in section.rows) {
+
                 when (row) {
 
                     is RowRadio -> {
@@ -84,8 +90,15 @@ class FormBuilder(private val context: Context, private val linearLayout: Linear
 
     private fun buildCheckbox(formCheckbox: RowCheckbox): View {
         val newBox = CheckBox(context)
+        newBox.tag = formCheckbox.key
         newBox.text = formCheckbox.title
         newBox.isChecked = formCheckbox.value.asBoolean
+
+        newBox.setOnCheckedChangeListener { buttonView, isChecked ->
+            val tag = buttonView.tag as String
+            answerMap[tag] = isChecked
+
+        }
 
         return newBox
     }
@@ -95,7 +108,7 @@ class FormBuilder(private val context: Context, private val linearLayout: Linear
         val rg = RadioGroup(context)
         val header = TextView(context)
         rg.orientation = RadioGroup.VERTICAL
-
+        rg.tag = rowRadio.key
         header.text = rowRadio.title
         rg.addView(header)
 
@@ -126,11 +139,13 @@ class FormBuilder(private val context: Context, private val linearLayout: Linear
         textInputLayout.layoutParams = textInputLayoutParams
         textInputLayout.addView(editText, editTextParams)
         textInputLayout.hint = rowText.title
+        textInputLayout.tag = rowText.key
 
         return textInputLayout
     }
 
-    companion object {
-        const val RADIO_B = ""
+    fun changeVisibility() {
+
     }
+
 }
