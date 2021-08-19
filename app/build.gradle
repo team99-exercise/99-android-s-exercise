@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
 
@@ -23,4 +25,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:27.1.1'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.jakewharton.timber:timber:4.7.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:design:27.1.1'
+}
+repositories {
+    mavenCentral()
+    google()
 }
