@@ -1,38 +1,29 @@
-package co.ninetynine.android.exercise.viewholders;
+package co.ninetynine.android.exercise.viewholders
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import co.ninetynine.android.exercise.adapters.RowsListAdapter
+import co.ninetynine.android.exercise.databinding.LayoutSectionBinding
+import co.ninetynine.android.exercise.model.Section
 
-import co.ninetynine.android.exercise.R;
-import co.ninetynine.android.exercise.adapters.RowsListAdapter;
-import co.ninetynine.android.exercise.model.Section;
+class SectionViewHolder(private val binding: LayoutSectionBinding) : RecyclerView.ViewHolder(binding.root) {
 
-public class SectionViewHolder extends RecyclerView.ViewHolder {
-    private final View itemView;
-
-    public SectionViewHolder(View itemView) {
-        super(itemView);
-        this.itemView = itemView;
-    }
-
-    public void bind(Section section) {
-        TextView header = itemView.findViewById(R.id.header);
-        RecyclerView rows = itemView.findViewById(R.id.rows);
-        TextView footer = itemView.findViewById(R.id.footer);
+    fun bind(section: Section) {
 
         if (section.hasTitle()) {
-            header.setText(section.title);
+            binding.header.text = section.title
+            binding.footer.visibility = View.VISIBLE
         } else {
-            header.setVisibility(View.GONE);
+            binding.header.visibility = View.GONE
         }
 
-        rows.setAdapter(new RowsListAdapter(section.rows));
+        binding.rows.adapter = RowsListAdapter(section.rows)
 
         if (section.hasFooter()) {
-            footer.setText(section.footer);
+            binding.footer.text = section.footer
+            binding.footer.visibility = View.VISIBLE
         } else {
-            footer.setVisibility(View.GONE);
+            binding.footer.visibility = View.GONE
         }
     }
 }

@@ -1,54 +1,35 @@
-package co.ninetynine.android.exercise.adapters;
+package co.ninetynine.android.exercise.adapters
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import co.ninetynine.android.exercise.databinding.LayoutRowCheckboxBinding
+import co.ninetynine.android.exercise.databinding.LayoutRowRadioBinding
+import co.ninetynine.android.exercise.databinding.LayoutRowTextBinding
+import co.ninetynine.android.exercise.model.Row
+import co.ninetynine.android.exercise.model.RowType
+import co.ninetynine.android.exercise.viewholders.RowViewHolder
 
-import java.util.ArrayList;
+class RowsListAdapter(private val rows: ArrayList<Row<*>>) : RecyclerView.Adapter<RowViewHolder>() {
 
-import co.ninetynine.android.exercise.R;
-import co.ninetynine.android.exercise.model.Row;
-import co.ninetynine.android.exercise.model.RowType;
-import co.ninetynine.android.exercise.viewholders.RowViewHolder;
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int) =
+            RowViewHolder(when (rows[position].type) {
+                RowType.CHECKBOX.value -> {
+                    LayoutRowCheckboxBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                }
+                RowType.RADIO.value -> {
+                    LayoutRowRadioBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                }
+                else -> {
+                    LayoutRowTextBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                }
+            })
 
-public class RowsListAdapter extends RecyclerView.Adapter<RowViewHolder> {
-
-    private ArrayList<Row> rows;
-
-    public RowsListAdapter(ArrayList<Row> rows) {
-        this.rows = rows;
+    override fun onBindViewHolder(holder: RowViewHolder, position: Int) {
+        holder.bind(rows[position])
     }
 
-    @NonNull
-    @Override
-    public RowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
+    override fun getItemViewType(position: Int) = position
 
-        String type = rows.get(position).type;
-        View view;
-        if (type.equals(RowType.CHECKBOX.value)) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_row_checkbox, parent, false);
-        } else if (type.equals(RowType.RADIO.value)) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_row_radio, parent, false);
-        } else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_row_text, parent, false);
-        }
-        return new RowViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull RowViewHolder holder, int position) {
-        holder.bind(rows.get(position));
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
-
-    @Override
-    public int getItemCount() {
-        return rows.size();
-    }
+    override fun getItemCount() = rows.size
 }

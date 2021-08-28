@@ -1,38 +1,26 @@
-package co.ninetynine.android.exercise.adapters;
+package co.ninetynine.android.exercise.adapters
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import co.ninetynine.android.exercise.databinding.LayoutSectionBinding
+import co.ninetynine.android.exercise.model.Section
+import co.ninetynine.android.exercise.viewholders.SectionViewHolder
 
-import java.util.ArrayList;
+class SectionsListAdapter(
+        private val sections: ArrayList<Section>
+) : RecyclerView.Adapter<SectionViewHolder>() {
 
-import co.ninetynine.android.exercise.R;
-import co.ninetynine.android.exercise.model.Section;
-import co.ninetynine.android.exercise.viewholders.SectionViewHolder;
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+            SectionViewHolder(LayoutSectionBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false)
+            )
 
-public class SectionsListAdapter extends RecyclerView.Adapter<SectionViewHolder> {
-
-    private ArrayList<Section> sections;
-
-    public SectionsListAdapter(ArrayList<Section> sections) {
-        this.sections = sections;
+    override fun onBindViewHolder(holder: SectionViewHolder, position: Int) {
+        holder.bind(sections[position])
     }
 
-    @NonNull
-    @Override
-    public SectionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new SectionViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_section, parent, false));
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull SectionViewHolder holder, int position) {
-        holder.bind(sections.get(position));
-    }
-
-    @Override
-    public int getItemCount() {
-        return sections.size();
-    }
+    override fun getItemCount() = sections.size
 }
