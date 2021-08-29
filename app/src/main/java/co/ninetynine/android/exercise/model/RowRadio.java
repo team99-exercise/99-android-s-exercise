@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public class RowRadio extends Row<FormOption> {
   public ArrayList<FormOption> options = new ArrayList<>();
 
-  @Override public String getValueForDisplay() {
+  @Override public FormOption getValueForDisplay() {
     for (FormOption option : options) {
       if (option.value.equals(value)) {
-        return option.label;
+        return option;
       }
     }
 

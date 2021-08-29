@@ -13,11 +13,11 @@ public class Section extends ShowHideFormBaseObject {
   public ArrayList<Row> rows = new ArrayList<>();
 
   public boolean hasTitle() {
-    return title != null;
+    return title != null && !title.isEmpty();
   }
 
   public boolean hasFooter() {
-    return footer != null;
+    return footer != null && !footer.isEmpty();
   }
 
   public void logSection() {

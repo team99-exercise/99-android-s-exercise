@@ -6,6 +6,7 @@ import co.ninetynine.android.exercise.model.Row;
 import co.ninetynine.android.exercise.model.RowCheckbox;
 import co.ninetynine.android.exercise.model.RowRadio;
 import co.ninetynine.android.exercise.model.RowText;
+import co.ninetynine.android.exercise.model.RowType;
 import co.ninetynine.android.exercise.model.Section;
 import co.ninetynine.android.exercise.model.ShowHideFormBaseObject;
 import com.google.gson.JsonArray;
@@ -34,9 +35,9 @@ public class PageSerializer implements JsonDeserializer<Page>, JsonSerializer<Pa
   HashMap<String, Class<? extends Row>> rowClassTypes = new HashMap<>();
 
   public PageSerializer() {
-    rowClassTypes.put("text", RowText.class);
-    rowClassTypes.put("radio", RowRadio.class);
-    rowClassTypes.put("checkbox", RowCheckbox.class);
+    rowClassTypes.put(RowType.TEXT.value, RowText.class);
+    rowClassTypes.put(RowType.RADIO.value, RowRadio.class);
+    rowClassTypes.put(RowType.CHECKBOX.value, RowCheckbox.class);
   }
 
 

@@ -7,7 +7,7 @@ public abstract class Row<T> extends FormBaseObject {
   public String type;
   public transient boolean hasDependantFormElements = false;
 
-  public abstract String getValueForDisplay();
+  public abstract T getValueForDisplay();
   public abstract void saveChosenValue(T valueToSave) throws ValidationException;
 
   @Override public String toString() {

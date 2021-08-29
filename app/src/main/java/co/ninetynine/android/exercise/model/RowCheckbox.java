@@ -8,7 +8,11 @@ import java.util.ArrayList;
  */
 public class RowCheckbox extends Row<Boolean> {
 
-  @Override public String getValueForDisplay() {
+  @Override public Boolean getValueForDisplay() {
+    if (value.isJsonPrimitive()) {
+      return value.getAsJsonPrimitive().getAsBoolean();
+    }
+
     return null;
   }
 
