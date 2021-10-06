@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "99-android-s-exercise-v2"
 include ':app'
+include ':core'
