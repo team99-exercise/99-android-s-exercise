@@ -1,19 +1,16 @@
 package co.ninetynine.android.exercisev2.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import co.ninetynine.android.exercisev2.databinding.ActivityHomeBinding
 
-class HomeActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityHomeBinding
+class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         launchSearchActivity()
     }
+
+    override fun createThisViewBinding() = ActivityHomeBinding.inflate(layoutInflater)
 
     private fun launchSearchActivity() {
         // TODO: Go to search activity
