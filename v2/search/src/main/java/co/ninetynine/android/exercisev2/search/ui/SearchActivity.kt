@@ -6,15 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.ninetynine.android.exercisev2.search.databinding.ActivitySearchBinding
 import co.ninetynine.android.exercisev2.search.model.ListingItem
 import co.ninetynine.android.exercisev2.search.viewmodel.SearchViewModel
-import co.ninetynine.android.exercisev2.search.viewmodel.SearchViewModelFactory
 import co.ninetynine.android.exercisev2.ui.BaseActivity
 
 class SearchActivity : BaseActivity<ActivitySearchBinding>() {
 
-    private val viewModel by lazy {
-        val factory = SearchViewModelFactory(application)
-        ViewModelProvider(this, factory)[SearchViewModel::class.java]
-    }
+    private lateinit var viewModel: SearchViewModel // TODO: Initialize `viewModel`
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,7 +10,7 @@ import co.ninetynine.android.exercisev2.search.model.ListingItem
 
 class SearchAdapter(
     private val context: Context
-): RecyclerView.Adapter<SearchViewHolder>() {
+) : RecyclerView.Adapter<SearchViewHolder>() {
     private val _searchItems = arrayListOf<ListingItem>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -21,8 +21,7 @@ class SearchAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        val binding = RowSearchItemBinding.inflate(context.getLayoutInflater())
-        return SearchViewHolder(binding)
+        TODO()
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
@@ -39,7 +38,7 @@ class SearchAdapter(
     override fun getItemCount() = _searchItems.size
 }
 
-class SearchViewHolder(binding: RowSearchItemBinding): RecyclerView.ViewHolder(binding.root) {
+class SearchViewHolder(binding: RowSearchItemBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(listingItem: ListingItem) {
         // TODO()
     }
