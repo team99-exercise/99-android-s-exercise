@@ -111,7 +111,7 @@ https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/listings.json
 } ]
 ``` 
 ## Getting Started
-To access the project for this assignment please go to https://github.com/team99/99-android-s-exercise/tree/develop-v2/v2
+To access the project for this assignment please go to https://github.com/team99/99-android-s-exercise/tree/master/v2
 
 ### Few things to keep in mind:
 - It'll be good to commit your work frequently so that we can follow your progress and see how you worked through this problem.
