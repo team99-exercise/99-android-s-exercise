@@ -33,18 +33,18 @@ This is a multi module android app with one primary feature - Search. But it is 
 - `Coroutines` for async tasks.
 
 ## What we need your help with
-[ ] Fix any errors in the `Retrofit` implementation
-[ ] Fix any errors in the `Room` database implementation
-[ ] Fix any errors in the `Hilt` and `Dagger` dependency injection implementations
-[ ] Implement the function `fetchSearchResults` in the `Repository`:
+- Fix any errors in the `Retrofit` implementation
+- Fix any errors in the `Room` database implementation
+- Fix any errors in the `Hilt` and `Dagger` dependency injection implementations
+- Implement the function `fetchSearchResults` in the `Repository`:
     - if data is available in the `Database`, then we need to return it
-    - else we need to fetch the data from `Service`, store result in `Database` and then return it.
-[ ] Implement the suspend function `fetchSearchResults` in  the`ViewModel`
+    - else we need to fetch the data from `Service`, store result in `Database` and then return it
+- Implement the function `fetchSearchResults` in  the`ViewModel`
     - to fetch data from `Repository`
     - publish the result to the `Fragment` via `LiveData`
-[ ] Implement the RecyclerView and RecyclerView Adapter using `View binding` and `Data binding`
-[ ] Style the `listing_card.xml` to match the Figma design.
-[ ] Add unit tests for the `fetchSearchResults` function in the `ViewModel`.
+- Implement the RecyclerView and RecyclerView Adapter using `View binding` and `Data binding`
+- Style the `listing_card.xml` to match the Figma design.
+- Add unit tests for the `fetchSearchResults` function in the `ViewModel`.
 
 ## Design
 Figma: https://www.figma.com/file/mEWTudJmPrEJWCUtl4nWH1/Android-challenge?node-id=1%3A651
