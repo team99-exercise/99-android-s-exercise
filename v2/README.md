@@ -17,7 +17,7 @@ This is a multi module android app with one primary feature - Search. But it is 
     - `search` dynamic-feature module
 - Project will contain the following components:
     - `Activity` for landing page (empty / blank page which redirects to search results page after launch)
-    - `Activity` with `Fragment` for the search results page
+    - `Activity` the search results page
     - `ViewModel` with function to fetch search results data from Repository
     - `Repository` with function to fetch search results data from Service or Database.
     - `Service` and `Database`
@@ -41,7 +41,7 @@ This is a multi module android app with one primary feature - Search. But it is 
     - else we'll need to fetch the results from the `Service`, store the results in the `Database` and then return it
 - Implement the function `fetchSearchResults` in  the`ViewModel`
     - we'll need to fetch the results from `Repository`
-    - publish the results to the `Fragment` via `LiveData`
+    - publish the results to the `Activity` via `LiveData`
 - Implement the RecyclerView and RecyclerView Adapter using `View binding` and `Data binding`
 - Style the `row_search_item.xml` to match the Figma design.
 - Add unit tests for the `fetchSearchResults` function in the `ViewModel`.
