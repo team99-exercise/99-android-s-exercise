@@ -1,20 +1,38 @@
 package co.ninetynine.android.exercisev2.search.ui
 
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.ninetynine.android.exercisev2.NinetyNineExerciseApp
+import co.ninetynine.android.exercisev2.di.SearchModuleDependencies
 import co.ninetynine.android.exercisev2.search.databinding.ActivitySearchBinding
+import co.ninetynine.android.exercisev2.search.di.DaggerSearchComponent
 import co.ninetynine.android.exercisev2.search.model.ListingItem
 import co.ninetynine.android.exercisev2.search.viewmodel.SearchViewModel
+import co.ninetynine.android.exercisev2.search.viewmodel.SearchViewModelFactory
 import co.ninetynine.android.exercisev2.ui.BaseActivity
+import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
 
 class SearchActivity : BaseActivity<ActivitySearchBinding>() {
 
-    private lateinit var viewModel: SearchViewModel // TODO: Initialize `viewModel`
+    @Inject
+    lateinit var viewModelFactory: SearchViewModelFactory
+    private val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)[SearchViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        injectDependencies()
         setupSearchList()
         observeLiveData()
+    }
+
+    private fun injectDependencies() {
+        DaggerSearchComponent.factory().create(
+            EntryPointAccessors.fromApplication((application as NinetyNineExerciseApp), SearchModuleDependencies::class.java)
+        ).inject(this)
     }
 
     override fun createThisViewBinding() = ActivitySearchBinding.inflate(layoutInflater)
