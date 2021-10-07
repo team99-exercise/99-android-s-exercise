@@ -1,6 +1,6 @@
 package co.ninetynine.android.exercisev2.di
 
-import co.ninetynine.android.exercisev2.const.Constants
+import co.ninetynine.android.exercisev2.constants.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
