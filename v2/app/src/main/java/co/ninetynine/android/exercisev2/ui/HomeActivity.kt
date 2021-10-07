@@ -1,4 +1,4 @@
-package co.ninetynine.android.exercisev2
+package co.ninetynine.android.exercisev2.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
