@@ -1,7 +1,6 @@
 package co.ninetynine.android.exercisev2.search.ui
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.ninetynine.android.exercisev2.search.databinding.ActivitySearchBinding
 import co.ninetynine.android.exercisev2.search.model.ListingItem

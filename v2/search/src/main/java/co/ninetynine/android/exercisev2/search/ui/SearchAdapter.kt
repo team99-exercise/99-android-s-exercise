@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.ninetynine.android.exercisev2.search.databinding.RowSearchItemBinding
-import co.ninetynine.android.exercisev2.search.ext.getLayoutInflater
 import co.ninetynine.android.exercisev2.search.model.ListingItem
 
 class SearchAdapter(
