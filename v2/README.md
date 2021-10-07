@@ -37,13 +37,13 @@ This is a multi module android app with one primary feature - Search. But it is 
 - Fix any errors in the `Room` database implementation
 - Fix any errors in the `Hilt` and `Dagger` dependency injection implementations
 - Implement the function `fetchSearchResults` in the `Repository`:
-    - if data is available in the `Database`, then we need to return it
-    - else we need to fetch the data from `Service`, store result in `Database` and then return it
+    - if the results are available in the `Database`, then we'll need to return it
+    - else we'll need to fetch the results from the `Service`, store the results in the `Database` and then return it
 - Implement the function `fetchSearchResults` in  the`ViewModel`
-    - to fetch data from `Repository`
-    - publish the result to the `Fragment` via `LiveData`
+    - we'll need to fetch the results from `Repository`
+    - publish the results to the `Fragment` via `LiveData`
 - Implement the RecyclerView and RecyclerView Adapter using `View binding` and `Data binding`
-- Style the `listing_card.xml` to match the Figma design.
+- Style the `row_search_item.xml` to match the Figma design.
 - Add unit tests for the `fetchSearchResults` function in the `ViewModel`.
 
 ## Design
