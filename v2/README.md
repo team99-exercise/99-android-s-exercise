@@ -2,6 +2,8 @@
 
 This is a fun exercise/challenge to help us assess the skill of candidates interested in joining the engineering team at 99.co. If you would like to attempt it, create your own fork and starting coding away!
 
+Duration: ~4 hours
+
 ## Introduction
 
 This is a multi module android app with one primary feature - Search. But it is only half way complete and we need your help to get us to the finish line! Here's what we have now:
