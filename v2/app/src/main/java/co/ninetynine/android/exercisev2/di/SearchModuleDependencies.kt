@@ -1,5 +1,6 @@
 package co.ninetynine.android.exercisev2.di
 
+import co.ninetynine.android.exercisev2.data.dao.ListingItemDao
 import co.ninetynine.android.exercisev2.data.database.AppDatabase
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
@@ -13,5 +14,7 @@ interface SearchModuleDependencies {
     fun getRetrofit(): Retrofit
 
     fun getAppDatabase(): AppDatabase
+
+    fun getListingItemDao(): ListingItemDao
 
 }

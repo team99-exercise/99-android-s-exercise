@@ -1,5 +1,6 @@
 package co.ninetynine.android.exercisev2.search.di
 
+import co.ninetynine.android.exercisev2.data.dao.ListingItemDao
 import co.ninetynine.android.exercisev2.data.database.AppDatabase
 import co.ninetynine.android.exercisev2.search.data.repository.SearchRepository
 import co.ninetynine.android.exercisev2.search.data.service.SearchService
@@ -24,8 +25,8 @@ class SearchModule {
     @Singleton
     fun provideSearchRepository(
         service: SearchService,
-        database: AppDatabase,
-    ) = SearchRepository(service, database)
+        listingItemDao: ListingItemDao,
+    ) = SearchRepository(service, listingItemDao)
 
     @Provides
     @Singleton
