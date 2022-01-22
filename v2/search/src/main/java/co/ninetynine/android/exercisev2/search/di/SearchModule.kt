@@ -1,6 +1,8 @@
 package co.ninetynine.android.exercisev2.search.di
 
+import co.ninetynine.android.exercisev2.data.dao.ListingItemDao
 import co.ninetynine.android.exercisev2.data.database.AppDatabase
+import co.ninetynine.android.exercisev2.search.data.mappers.ListItemMapper
 import co.ninetynine.android.exercisev2.search.data.repository.SearchRepository
 import co.ninetynine.android.exercisev2.search.data.service.SearchService
 import co.ninetynine.android.exercisev2.search.viewmodel.SearchViewModelFactory
@@ -22,10 +24,16 @@ class SearchModule {
 
     @Provides
     @Singleton
+    fun provideListItemMapper(): ListItemMapper =
+        ListItemMapper()
+
+    @Provides
+    @Singleton
     fun provideSearchRepository(
         service: SearchService,
-        database: AppDatabase,
-    ) = SearchRepository(service, database)
+        listingItemDao: ListingItemDao,
+        listItemMapper: ListItemMapper
+    ) = SearchRepository(service, listingItemDao,listItemMapper)
 
     @Provides
     @Singleton

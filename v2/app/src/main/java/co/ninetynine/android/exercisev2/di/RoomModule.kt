@@ -23,4 +23,9 @@ class RoomModule {
         AppDatabase::class.java, "nn-exercise-database"
     ).build()
 
+
+    @Singleton
+    @Provides
+    fun providesListingItemDao(appDatabase: AppDatabase) = appDatabase.listingItemDao()
+
 }
