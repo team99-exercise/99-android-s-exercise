@@ -13,7 +13,7 @@ class SearchRepository @Inject constructor(
     var listItemMapper: ListItemMapper
 ) {
 
-    suspend fun getSearchResults(): List<ListingItem> {
+    suspend fun fetchSearchResults(): List<ListingItem> {
         // 1. "Return results from `database` if not empty
         val resultFromDatabase = listingItemDao.getAll()
         return if (resultFromDatabase.isNotEmpty()) listItemMapper.mapAllToModel(resultFromDatabase)
