@@ -52,5 +52,9 @@ class ListItemMapper @Inject constructor(): Mapper<ListingItem, ListingItemEntit
         )
     }
 
+    override fun mapAllToRoom(input: List<ListingItem>): List<ListingItemEntity> = input.map { mapToRoom(it) }
+
+    override fun mapAllToModel(input: List<ListingItemEntity>): List<ListingItem> = input.map { mapToModel(it) }
+
 
 }

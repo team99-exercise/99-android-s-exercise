@@ -5,4 +5,8 @@ interface Mapper<E, V> {
   fun mapToRoom(input: E): V
 
   fun mapToModel(input: V): E
+
+  fun mapAllToRoom(input: List<E>):List<V>
+
+  fun mapAllToModel(input: List<V>):List<E>
 }
