@@ -14,16 +14,21 @@ class SearchRepository @Inject constructor(
 ) {
 
     suspend fun getSearchResults(): List<ListingItem> {
-        TODO()
-        var result = service.getSearchResults()
         // 1. "Return results from `database` if not empty
+        val resultFromDatabase = listingItemDao.getAll()
+        return if (resultFromDatabase.isNotEmpty()) listItemMapper.mapAllToModel(resultFromDatabase)
         // 2. Else fetch results from `service`
-        // 3. Cache results in `database`
-        // 4. Return results
+        else {
+            val resultFromService = service.getSearchResults()
+            // 3. Cache results in `database`
+            saveResultsToDatabase(resultFromService)
+            // 4. Return results
+            resultFromService
+        }
     }
 
-    suspend fun saveResultsToDatabase(result : List<ListingItem>){
-//        listingItemDao.insertAll(result);
+    private suspend fun saveResultsToDatabase(result : List<ListingItem>){
+        listingItemDao.insertAll(listItemMapper.mapAllToRoom(result))
     }
 
 }
