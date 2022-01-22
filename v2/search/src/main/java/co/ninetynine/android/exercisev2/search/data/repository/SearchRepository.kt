@@ -2,13 +2,15 @@ package co.ninetynine.android.exercisev2.search.data.repository
 
 import co.ninetynine.android.exercisev2.data.dao.ListingItemDao
 import co.ninetynine.android.exercisev2.data.database.AppDatabase
+import co.ninetynine.android.exercisev2.search.data.mappers.ListItemMapper
 import co.ninetynine.android.exercisev2.search.data.service.SearchService
 import co.ninetynine.android.exercisev2.search.model.ListingItem
 import javax.inject.Inject
 
 class SearchRepository @Inject constructor(
     var service: SearchService,
-    var listingItemDao: ListingItemDao
+    var listingItemDao: ListingItemDao,
+    var listItemMapper: ListItemMapper
 ) {
 
     suspend fun getSearchResults(): List<ListingItem> {
