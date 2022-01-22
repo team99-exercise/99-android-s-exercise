@@ -15,17 +15,17 @@ class ListingItemEntity(
     val projectName: String,
     val tenure: Int,
     @Embedded(prefix = "address")
-    val address: Address,
+    val address: AddressEntity,
     @Embedded(prefix = "attributes")
-    val attributes: Attributes,
+    val attributes: AttributesEntity,
 )
 
-class Address(
+class AddressEntity(
     val district: String,
     val streetName: String,
 )
 
-class Attributes(
+class AttributesEntity(
     val areaSize: Int,
     val bathrooms: Int,
     val bedrooms: Int,

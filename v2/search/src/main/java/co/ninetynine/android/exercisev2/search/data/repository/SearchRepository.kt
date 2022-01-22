@@ -14,7 +14,6 @@ class SearchRepository @Inject constructor(
     suspend fun getSearchResults(): List<ListingItem> {
         TODO()
         var result = service.getSearchResults()
-
         // 1. "Return results from `database` if not empty
         // 2. Else fetch results from `service`
         // 3. Cache results in `database`
@@ -22,7 +21,7 @@ class SearchRepository @Inject constructor(
     }
 
     suspend fun saveResultsToDatabase(result : List<ListingItem>){
-
+//        listingItemDao.insertAll(result);
     }
 
 }
