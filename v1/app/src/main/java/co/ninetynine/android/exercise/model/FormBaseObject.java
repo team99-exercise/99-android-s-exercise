@@ -1,0 +1,15 @@
+package co.ninetynine.android.exercise.model;
+
+import com.google.gson.JsonElement;
+
+/**
+ * Created by suresh on 27/11/15.
+ */
+public abstract class FormBaseObject {
+  public String key, title;
+  public JsonElement value;
+
+  @Override public String toString() {
+    return "[key=" + key + ", title=" + title + ", value=" + value + "]";
+  }
+}

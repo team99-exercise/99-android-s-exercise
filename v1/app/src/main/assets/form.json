@@ -1,0 +1,62 @@
+{
+	"title": "Search Filters",
+	"sections": [{
+		"title": "What are you looking for?",
+		"footer": null,
+		"visible_conditions": null,
+		"rows": [{
+			"title": "Category",
+			"type": "radio",
+			"value": "rent",
+			"visible_conditions": null,
+			"key": "listing_type",
+			"options": [{
+				"value": "rent",
+				"label": "Rental"
+			}, {
+				"value": "sale",
+				"label": "Sale"
+			}]
+		}, {
+			"title": "Show advanced options",
+			"type": "checkbox",
+			"value": false,
+			"visible_conditions": null,
+			"key": "advanced_options"
+		}]
+	}, {
+		"title": "What are you renting?",
+		"footer": null,
+		"visible_conditions": [{
+			"listing_type": "rent"
+		}],
+		"rows": [{
+			"title": "Rental Type",
+			"type": "radio",
+			"value": "unit",
+			"visible_conditions": null,
+			"key": "rental_type",
+			"options": [{
+				"value": "room",
+				"label": "Room"
+			}, {
+				"value": "unit",
+				"label": "Unit"
+			}]
+		}]
+	}, {
+		"footer": null,
+		"visible_conditions": [{
+			"advanced_options": true
+		}],
+		"rows": [{
+			"title": "Keywords",
+			"placeholder": "Keywords separated by commas. For example: \"Gym, high floor...\"",
+			"value": null,
+			"visible_conditions": null,
+			"key": "keywords",
+			"type": "text"
+		}],
+		"title": "Advanced Options"
+	}]
+}
