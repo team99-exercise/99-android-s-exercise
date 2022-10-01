@@ -40,7 +40,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
     private fun setupSearchList() {
         getThisViewBinding().searchResultsList.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = SearchAdapter(context)
+            adapter = SearchAdapter()
         }
     }
 
@@ -51,7 +51,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
     }
 
     private fun onSearchItemsChanged(items: List<ListingItem>) {
-        getSearchListAdapter().setSearchItems(items)
+        getSearchListAdapter().submitList(items)
     }
 
     private fun getSearchListAdapter() = getThisViewBinding()

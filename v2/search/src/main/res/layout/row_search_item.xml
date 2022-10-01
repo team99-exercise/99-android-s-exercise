@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?selectableItemBackground"
-    android:orientation="vertical">
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="5dp"
+    app:cardElevation="4dp"
+    app:contentPadding="12dp">
 
-    <TextView
-        android:id="@+id/placeholder"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Item Placeholder"
-        android:textSize="16sp" />
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="match_parent"
+            android:layout_height="163dp"
+            android:scaleType="centerCrop"
+            android:textSize="16sp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.99.Image.Listing"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+
+        <TextView
+            android:id="@+id/tv_project_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/text_color_primary"
+            android:textSize="16sp"
+            tools:text="Parkview Apartments" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="12sp"
+            tools:text="12 Meyappa Chettiar Rd · D13" />
+
+
+        <TextView
+            android:id="@+id/tv_categroy_year_and_tenure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="12sp"
+            tools:text="12 Meyappa Chettiar Rd · D13" />
+
+        <TextView
+            android:id="@+id/tv_bed_bath_tenure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_color_primary"
+            android:textSize="14sp"
+            tools:text="3 Beds  ·  2 Baths  ·  2,561 sqft" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/text_color_primary"
+            android:textSize="16sp"
+            tools:text="$5,700/mo" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

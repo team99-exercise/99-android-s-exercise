@@ -1,44 +1,53 @@
 package co.ninetynine.android.exercisev2.search.ui
 
-import android.annotation.SuppressLint
-import android.content.Context
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import co.ninetynine.android.exercisev2.search.databinding.RowSearchItemBinding
 import co.ninetynine.android.exercisev2.search.model.ListingItem
+import com.bumptech.glide.Glide
 
-class SearchAdapter(
-    private val context: Context
-) : RecyclerView.Adapter<SearchViewHolder>() {
-    private val _searchItems = arrayListOf<ListingItem>()
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setSearchItems(searchItems: List<ListingItem>) {
-        _searchItems.clear()
-        _searchItems.addAll(searchItems)
-        notifyDataSetChanged()
-    }
+class SearchAdapter : ListAdapter<ListingItem, SearchViewHolder>(DIFF) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        TODO()
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return SearchViewHolder(RowSearchItemBinding.inflate(layoutInflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-        val item = getItemAtPositionOrNull(position) ?: return
+        val item = getItem(position)
         holder.bind(item)
     }
 
-    private fun getItemAtPositionOrNull(position: Int) = if (position.isValidPosition()) {
-        _searchItems[position]
-    } else null
+    companion object {
+        private val DIFF = object : DiffUtil.ItemCallback<ListingItem>() {
+            override fun areItemsTheSame(oldItem: ListingItem, newItem: ListingItem): Boolean {
+                return oldItem.id == newItem.id
+            }
 
-    private fun Int.isValidPosition() = this in 0 until itemCount
-
-    override fun getItemCount() = _searchItems.size
+            override fun areContentsTheSame(oldItem: ListingItem, newItem: ListingItem): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }
 
-class SearchViewHolder(binding: RowSearchItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class SearchViewHolder(private val binding: RowSearchItemBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+    private val separator = Typography.middleDot
     fun bind(listingItem: ListingItem) {
-        // TODO()
+        binding.tvProjectName.text = listingItem.projectName
+        binding.tvAddress.text =
+            "${listingItem.address.streetName}  $separator  ${listingItem.address.district}"
+        binding.tvCategroyYearAndTenure.text =
+            "${listingItem.category}  $separator  ${listingItem.completedAt}  $separator  ${listingItem.tenure} yrs"
+        binding.tvBedBathTenure.text =
+            "${listingItem.attributes.bedrooms} Beds  ${Typography.middleDot}  ${listingItem.attributes.bathrooms} Baths  ${Typography.middleDot}  ${listingItem.attributes.areaSize} sqft"
+        binding.tvProjectName.text = listingItem.projectName
+        binding.tvProjectName.text = listingItem.projectName
+        binding.tvPrice.text = "${Typography.dollar}${listingItem.attributes.price}/mo"
+        Glide.with(binding.root).load(listingItem.photoUrl).into(binding.ivPhoto)
     }
 }
