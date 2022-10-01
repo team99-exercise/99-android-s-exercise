@@ -1,7 +1,9 @@
 package co.ninetynine.android.exercisev2.search.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.ninetynine.android.exercisev2.di.SearchModuleDependencies
 import co.ninetynine.android.exercisev2.search.databinding.ActivitySearchBinding
@@ -45,8 +47,10 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
     }
 
     private fun observeLiveData() {
-        viewModel.listingItems.observeNotNull {
-            onSearchItemsChanged(it)
+        viewModel.listingItems.observeNotNull { state ->
+            getThisViewBinding().loading.isVisible = state.isLoading
+            state.data?.let(::onSearchItemsChanged)
+            state.error?.let(::showError)
         }
     }
 
@@ -57,4 +61,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
     private fun getSearchListAdapter() = getThisViewBinding()
         .searchResultsList.adapter as SearchAdapter
 
+    private fun showError(throwable: Throwable) {
+        Toast.makeText(this, throwable.message, Toast.LENGTH_SHORT).show()
+    }
 }

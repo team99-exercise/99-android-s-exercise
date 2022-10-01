@@ -8,16 +8,22 @@ import kotlinx.coroutines.launch
 class SearchViewModel(
     private val repository: SearchRepository,
 ) : ViewModel() {
-    private val _listingItems = MutableLiveData<List<ListingItem>>()
-    val listingItems: LiveData<List<ListingItem>> = _listingItems
+    private val _listingItems = MutableLiveData<State<List<ListingItem>>>()
+    val listingItems: LiveData<State<List<ListingItem>>> = _listingItems
 
     init {
         fetchSearchResults()
     }
 
     private fun fetchSearchResults() = viewModelScope.launch {
-        val searchResults = repository.getSearchResults()
-        _listingItems.postValue(searchResults)
+        runCatching {
+            _listingItems.postValue(State(isLoading = true))
+            repository.getSearchResults()
+        }.onSuccess {
+            _listingItems.postValue(State(isLoading = false, data = it))
+        }.onFailure {
+            _listingItems.postValue(State(isLoading = false, error = it))
+        }
     }
 }
 

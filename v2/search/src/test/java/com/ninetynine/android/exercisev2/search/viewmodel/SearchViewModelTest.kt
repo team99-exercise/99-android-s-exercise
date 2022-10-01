@@ -46,19 +46,33 @@ class SearchViewModelTest {
         photoUrl = ""
     )
 
+    private val searchRepo = mockk<SearchRepository>()
+
     @Before
     fun setup() {
-        val searchRepo = mockk<SearchRepository>()
-        coEvery { searchRepo.getSearchResults() } returns listOf(mockModel)
         searchViewModel = SearchViewModel(searchRepo)
     }
 
-
     @Test
-    fun `Test fetched results are published to Live Data`() = runTest {
+    fun `Result are returned successfully, then published data to Live Data`() = runTest {
+        coEvery { searchRepo.getSearchResults() } returns listOf(mockModel)
+
         advanceUntilIdle()
         val result = searchViewModel.listingItems.getOrAwaitValue()
-        Truth.assertThat(result).hasSize(1)
-        Truth.assertThat(result).contains(mockModel)
+        Truth.assertThat(result.data).hasSize(1)
+        Truth.assertThat(result.data).contains(mockModel)
+        Truth.assertThat(result.isLoading).isFalse()
+        Truth.assertThat(result.error).isNull()
+    }
+
+    @Test
+    fun `Error getting result, then published error to Live Data`() = runTest {
+        coEvery { searchRepo.getSearchResults() } throws IllegalStateException()
+
+        advanceUntilIdle()
+        val result = searchViewModel.listingItems.getOrAwaitValue()
+        Truth.assertThat(result.data).isNull()
+        Truth.assertThat(result.isLoading).isFalse()
+        Truth.assertThat(result.error).isInstanceOf(IllegalStateException::class.java)
     }
 }
