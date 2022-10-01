@@ -3,9 +3,10 @@ package co.ninetynine.android.exercisev2.search.viewmodel
 import androidx.lifecycle.*
 import co.ninetynine.android.exercisev2.search.data.repository.SearchRepository
 import co.ninetynine.android.exercisev2.search.model.ListingItem
+import kotlinx.coroutines.launch
 
 class SearchViewModel(
-    val repository: SearchRepository,
+    private val repository: SearchRepository,
 ) : ViewModel() {
     private val _listingItems = MutableLiveData<List<ListingItem>>()
     val listingItems: LiveData<List<ListingItem>> = _listingItems
@@ -14,8 +15,9 @@ class SearchViewModel(
         fetchSearchResults()
     }
 
-    private fun fetchSearchResults() {
-        // TODO: Fetch result from `repository` and update `_listingItems` live data
+    private fun fetchSearchResults() = viewModelScope.launch {
+        val searchResults = repository.getSearchResults()
+        _listingItems.postValue(searchResults)
     }
 }
 
