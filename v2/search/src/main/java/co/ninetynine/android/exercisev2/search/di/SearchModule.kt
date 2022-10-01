@@ -1,6 +1,5 @@
 package co.ninetynine.android.exercisev2.search.di
 
-import co.ninetynine.android.exercisev2.data.database.AppDatabase
 import co.ninetynine.android.exercisev2.search.data.repository.SearchRepository
 import co.ninetynine.android.exercisev2.search.data.service.SearchService
 import co.ninetynine.android.exercisev2.search.viewmodel.SearchViewModelFactory
@@ -22,14 +21,6 @@ class SearchModule {
 
     @Provides
     @Singleton
-    fun provideSearchRepository(
-        service: SearchService,
-        database: AppDatabase,
-    ) = SearchRepository(service, database)
-
-    @Provides
-    @Singleton
     fun provideSearchViewModelFactory(repository: SearchRepository) =
         SearchViewModelFactory(repository)
-
 }

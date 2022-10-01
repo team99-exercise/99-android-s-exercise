@@ -3,6 +3,7 @@ package co.ninetynine.android.exercisev2.di
 import android.content.Context
 import androidx.room.Room
 import co.ninetynine.android.exercisev2.data.database.AppDatabase
+import co.ninetynine.android.exercisev2.data.database.ListingDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,4 +24,10 @@ class RoomModule {
         AppDatabase::class.java, "nn-exercise-database"
     ).build()
 
+
+    @Provides
+    @Singleton
+    fun providesListingDao(
+        db: AppDatabase
+    ) : ListingDao = db.listingDao()
 }

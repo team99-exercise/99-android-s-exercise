@@ -1,6 +1,6 @@
 package co.ninetynine.android.exercisev2.di
 
-import co.ninetynine.android.exercisev2.data.database.AppDatabase
+import co.ninetynine.android.exercisev2.data.database.ListingDao
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -12,6 +12,6 @@ interface SearchModuleDependencies {
 
     fun getRetrofit(): Retrofit
 
-    fun getAppDatabase(): AppDatabase
+    fun getListingDao(): ListingDao
 
 }
