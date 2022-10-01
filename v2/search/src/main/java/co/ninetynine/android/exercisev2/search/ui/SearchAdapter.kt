@@ -1,13 +1,17 @@
 package co.ninetynine.android.exercisev2.search.ui
 
+import android.icu.number.NumberFormatter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import co.ninetynine.android.exercisev2.search.databinding.RowSearchItemBinding
+import co.ninetynine.android.exercisev2.search.model.Address
 import co.ninetynine.android.exercisev2.search.model.ListingItem
 import com.bumptech.glide.Glide
+import java.text.DecimalFormat
+import java.util.*
 
 class SearchAdapter : ListAdapter<ListingItem, SearchViewHolder>(DIFF) {
 
@@ -39,15 +43,32 @@ class SearchViewHolder(private val binding: RowSearchItemBinding) :
     private val separator = Typography.middleDot
     fun bind(listingItem: ListingItem) {
         binding.tvProjectName.text = listingItem.projectName
-        binding.tvAddress.text =
-            "${listingItem.address.streetName}  $separator  ${listingItem.address.district}"
-        binding.tvCategroyYearAndTenure.text =
-            "${listingItem.category}  $separator  ${listingItem.completedAt}  $separator  ${listingItem.tenure} yrs"
-        binding.tvBedBathTenure.text =
-            "${listingItem.attributes.bedrooms} Beds  ${Typography.middleDot}  ${listingItem.attributes.bathrooms} Baths  ${Typography.middleDot}  ${listingItem.attributes.areaSize} sqft"
+        binding.tvAddress.text = formatAddress(listingItem.address)
+        binding.tvCategroyYearAndTenure.text = formatCategoryAndTenure(listingItem)
+        binding.tvBedBathSize.text = formatBedBathSize(listingItem)
         binding.tvProjectName.text = listingItem.projectName
-        binding.tvProjectName.text = listingItem.projectName
-        binding.tvPrice.text = "${Typography.dollar}${listingItem.attributes.price}/mo"
+        binding.tvPrice.text = formatPrice(listingItem)
         Glide.with(binding.root).load(listingItem.photoUrl).into(binding.ivPhoto)
     }
+
+    private fun formatPrice(listingItem: ListingItem): String {
+        val decimalFormat = DecimalFormat("#,###")
+        return "${Typography.dollar}${decimalFormat.format(listingItem.attributes.price)}/mo"
+    }
+
+
+    private fun formatBedBathSize(listingItem: ListingItem): String {
+        val decimalFormat = DecimalFormat("#,###")
+        return "${listingItem.attributes.bedrooms} Beds" +
+                "  ${Typography.middleDot}  " +
+                "${listingItem.attributes.bathrooms} Baths" +
+                "  ${Typography.middleDot}  " +
+                "${decimalFormat.format(listingItem.attributes.areaSize)} sqft"
+    }
+
+    private fun formatCategoryAndTenure(listingItem: ListingItem) =
+        "${listingItem.category}  $separator  ${listingItem.completedAt}  $separator  ${listingItem.tenure} yrs"
+
+    private fun formatAddress(address: Address) =
+        "${address.streetName}  $separator  ${address.district}"
 }

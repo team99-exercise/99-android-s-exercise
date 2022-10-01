@@ -57,7 +57,7 @@
             tools:text="12 Meyappa Chettiar Rd · D13" />
 
         <TextView
-            android:id="@+id/tv_bed_bath_tenure"
+            android:id="@+id/tv_bed_bath_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
