@@ -1,9 +1,8 @@
 package co.ninetynine.android.exercisev2.search.ui
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.ninetynine.android.exercisev2.NinetyNineExerciseApp
 import co.ninetynine.android.exercisev2.di.SearchModuleDependencies
 import co.ninetynine.android.exercisev2.search.databinding.ActivitySearchBinding
 import co.ninetynine.android.exercisev2.search.di.DaggerSearchComponent
@@ -18,20 +17,21 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
 
     @Inject
     lateinit var viewModelFactory: SearchViewModelFactory
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[SearchViewModel::class.java]
-    }
+    private val viewModel by viewModels<SearchViewModel>(factoryProducer = { viewModelFactory })
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         injectDependencies()
+        super.onCreate(savedInstanceState)
         setupSearchList()
         observeLiveData()
     }
 
     private fun injectDependencies() {
         DaggerSearchComponent.factory().create(
-            EntryPointAccessors.fromApplication((application as NinetyNineExerciseApp), SearchModuleDependencies::class.java)
+            EntryPointAccessors.fromApplication(
+                applicationContext,
+                SearchModuleDependencies::class.java
+            )
         ).inject(this)
     }
 
