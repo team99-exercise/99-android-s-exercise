@@ -119,5 +119,5 @@ To access the project for this assignment please go to https://github.com/team99
 ### Instructions
 1. Create your own fork of this repository to get started.
 2. Remember to use the branch corresponding to the part of the exercise you're working on.
-3. Once you've finished the challenge, grant poepoe88@gmail.com access to the fork as admin and send us an APK file that can be installed on devices.
+3. Once you've finished the challenge, grant shawn@shawnbaek.com access to the fork as admin and send us an APK file that can be installed on devices.
 4. Add in any additional instructions we might need to setup the codebase on our local machines.
