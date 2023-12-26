@@ -8,11 +8,6 @@ Duration: ~4 hours
 You are going to complete 2 pages from scratch.
 ​
 ### `Search Result Page`: Displaying listings
-Every time users open this page, the following steps will be executed:
-1. Return listing results from local `database` if not empty
-2. Else fetch results from [Search Result Endpoint](https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/listings.json)
-3. Cache results in local `database`
-4. Return results
 ​
 ### `Listing Detail Page`: 
 User will be pushed to this page after clicking listing in `Search Result Page`
