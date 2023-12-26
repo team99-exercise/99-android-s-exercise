@@ -2,8 +2,7 @@
 ​
 This is a fun exercise/challenge to help us assess the skill of candidates interested in joining the engineering team at 99.co. If you would like to attempt it, create your own fork and starting coding away!
 ​
-Duration: ~4 hours
-​
+
 ## Introduction
 You are going to complete 2 pages from scratch.
 ​
@@ -26,13 +25,13 @@ You can implement the assignment using any libraries and architecture you want. 
 2. Do as much as you can, if you can't implement some features, please leave a comment in the code to explain what you want to do.
 ​
 ## Design
-Figma: https://www.figma.com/file/mEWTudJmPrEJWCUtl4nWH1/Android-challenge?node-id=1%3A651
+Figma: https://www.figma.com/file/4ms9vSCpUcHRqqLTaVcbYY/Mobile-Team-Home-Assignment?node-id=0%3A1&mode=dev
 ​
 <img width="418" alt="Screenshot 2021-10-04 at 1 24 10 AM" src="https://user-images.githubusercontent.com/7981907/135764791-3dc209b1-5da9-4bde-9371-90cc289d5349.png">
 ​
 ## Endpoints
-- [Search Result](https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/listings.json)
-- [Listing Detail](https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/details/0.json)
+- [Search Result Page](https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/listings.json)
+- [Listing Detail Page](https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/details/0.json)
 ​
 ```
 [ {
