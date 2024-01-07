@@ -27,6 +27,14 @@ android {
             )
         }
     }
+    flavorDimensions += "environment"
+    productFlavors {
+        create("mockEnv") {
+            dimension = "environment"
+            buildConfigField("String", "BASE_URL", "\"https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/\"")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,6 +44,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -48,4 +57,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.bundles.coroutine)
+    implementation(libs.bundles.retrofit)
+    implementation(libs.coil)
+    implementation(libs.koin.android)
+    implementation(libs.androidx.startup)
+    debugImplementation(libs.chucker)
+    releaseImplementation(libs.chucker.noop)
 }

@@ -8,6 +8,14 @@ espresso-core = "3.5.1"
 appcompat = "1.6.1"
 material = "1.11.0"
 constraintlayout = "2.1.4"
+retrofit= "2.9.0"
+lifecycle = "2.6.2"
+coroutines = "1.7.2"
+koin = "3.5.3"
+androidx_startup = "1.1.1"
+chucker = "4.0.0"
+coil = "2.4.0"
+
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -18,7 +26,38 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
+
+#lifecycle
+lifecycle_viewmodel_ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle_core_ktx = { module = "androidx.lifecycle:lifecycle-livedata-core-ktx", version.ref = "lifecycle" }
+lifecycle_livedata_ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+
+#app startup
+androidx_startup = { module = "androidx.startup:startup-runtime", version.ref = "androidx_startup" }
+
+#koin
+koin_android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+
+#coil Image Loader
+coil = { module = 'io.coil-kt:coil', version.ref = "coil" }
+
+#network
+retrofit_client = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit_gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+
+#coroutines
+coroutine_core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutine_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+
+#chucker
+chucker = { module = "com.github.chuckerteam.chucker:library", version.ref = "chucker" }
+chucker_noop = { module = "com.github.chuckerteam.chucker:library-no-op", version.ref = "chucker" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
+[bundles]
+lifecycle = ["lifecycle.viewmodel.ktx", "lifecycle.core.ktx", "lifecycle.livedata.ktx"]
+coroutine = ["coroutine_core", "coroutine_android"]
+retrofit = ["retrofit_client", "retrofit_gson"]
