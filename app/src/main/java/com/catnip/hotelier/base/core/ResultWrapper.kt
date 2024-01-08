@@ -11,7 +11,7 @@ sealed class ResultWrapper<T>(
     val message: String? = null,
     val exception: Exception? = null,
 ) {
-    class Success<T>(data: T) : ResultWrapper<T>(data)
+    class Success<T>(data: T? = null) : ResultWrapper<T>(data)
     class Error<T>(exception: Exception?, data: T? = null) : ResultWrapper<T>(data, exception = exception)
     class Empty<T>(data: T? = null) : ResultWrapper<T>(data)
     class Loading<T>(data: T? = null) : ResultWrapper<T>(data)

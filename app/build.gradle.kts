@@ -31,7 +31,7 @@ android {
     productFlavors {
         create("mockEnv") {
             dimension = "environment"
-            buildConfigField("String", "BASE_URL", "\"https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/\"")
+            buildConfigField("String", "BASE_URL", "\"https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app\"")
         }
     }
 
@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+    implementation(libs.androidx.swiperefreshlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Hotelier</string>
+    <string name="title_search_result">Search Result</string>
+    <string name="text_error_no_network">Oops, Something wrong when surf the internet.\n Please check your internet connection and swipe to retry again.</string>
+    <string name="text_error_common">Oops, Something went wrong. Please wait a moment and swipe to retry again.</string>
+    <string name="text_error_data_empty">We can\'t find any result. </string>
+    <string name="format_place_desc">%s · %s\n%s · %s · %s yrs</string>
+    <string name="format_place_room_desc">%s Beds · %s Baths · %s sqft</string>
+    <string name="format_place_price">%s/mo</string>
+    <string name="cd_place_image">Place Image</string>
+    <string name="cd_icon_state">Icon</string>
 </resources>

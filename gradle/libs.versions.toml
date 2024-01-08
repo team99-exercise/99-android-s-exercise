@@ -15,6 +15,7 @@ koin = "3.5.3"
 androidx_startup = "1.1.1"
 chucker = "4.0.0"
 coil = "2.4.0"
+swiperefreshlayout = "1.1.0"
 
 
 [libraries]
@@ -52,6 +53,7 @@ coroutine_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android
 #chucker
 chucker = { module = "com.github.chuckerteam.chucker:library", version.ref = "chucker" }
 chucker_noop = { module = "com.github.chuckerteam.chucker:library-no-op", version.ref = "chucker" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

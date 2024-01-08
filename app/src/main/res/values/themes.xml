@@ -5,5 +5,8 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Hotelier" parent="Base.Theme.Hotelier" />
+    <style name="Theme.Hotelier" parent="Base.Theme.Hotelier">
+        <item name="fontFamily">@font/avenir_font</item>
+    </style>
+
 </resources>
