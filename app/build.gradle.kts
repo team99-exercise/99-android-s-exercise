@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    id("com.google.devtools.ksp")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -53,13 +55,32 @@ android {
 dependencies {
 
     implementation(libs.core.ktx)
+
     implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.viewmodel)
+
     implementation(libs.activity.compose)
+    implementation(libs.constraintlayout)
+    implementation(libs.navigation)
+    implementation(libs.coil)
+
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.moshiConverter)
+    implementation(libs.squareup.moshi)
+    ksp(libs.squareup.moshiCodegen)
+    implementation(libs.squareup.okhttp)
+    implementation(libs.squareup.loggingInterceptor)
+
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
