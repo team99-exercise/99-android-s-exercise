@@ -21,6 +21,13 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        //todo, move to a secret properties file
+        buildConfigField(
+            "String",
+            "BASE_URL",
+            "\"https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/\""
+        )
     }
 
     buildTypes {
@@ -41,6 +48,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
