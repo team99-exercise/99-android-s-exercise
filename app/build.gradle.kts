@@ -64,7 +64,8 @@ dependencies {
 
     implementation(libs.core.ktx)
 
-    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.runtimeKtx)
+    implementation(libs.lifecycle.runtimeCompose)
     implementation(libs.lifecycle.viewmodel)
 
     implementation(libs.activity.compose)
