@@ -21,7 +21,9 @@ fun PropertyListScreen(
         LazyColumn(
             modifier = modifier,
         ) {
-            items(items = list) { item ->
+            items(
+                items = list,
+                key = { model -> model.id }) { item ->
                 PropertyListItem(model = item) { onClickItem(item.id) }
             }
         }

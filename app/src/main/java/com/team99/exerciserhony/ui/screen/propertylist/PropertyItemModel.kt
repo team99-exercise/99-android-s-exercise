@@ -6,6 +6,8 @@ import coil.compose.rememberAsyncImagePainter
 import com.team99.exerciserhony.R
 import com.team99.exerciserhony.domain.entity.Property
 import com.team99.exerciserhony.utils.toUsdPerMonth
+import kotlin.random.Random
+import kotlin.random.nextInt
 
 data class PropertyItemModel(
     private val imageUrl: String,
@@ -37,7 +39,7 @@ data class PropertyItemModel(
             @Composable
             get() = PropertyItemModel(
                 imageUrl = "",
-                id = 0,
+                id = Random.nextInt(1..1000000),
                 name = "Parkview Apartments",
                 streetName = "12 Meyappa Chettiar Rd",
                 district = "D13",
@@ -52,9 +54,7 @@ data class PropertyItemModel(
 
         internal val MOCK_LIST
             @Composable
-            get() = listOf(
-                PropertyItemModel.MOCK, PropertyItemModel.MOCK, PropertyItemModel.MOCK
-            )
+            get() = listOf(MOCK, MOCK, MOCK)
 
         fun parseEntity(property: Property): PropertyItemModel = with(property) {
             PropertyItemModel(
