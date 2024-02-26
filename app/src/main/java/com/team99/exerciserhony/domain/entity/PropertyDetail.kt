@@ -11,7 +11,7 @@ data class PropertyDetail(
     @Json(name = "id") val id: Int? = null,
     @Json(name = "photo") val photo: String? = null,
     @Json(name = "project_name") val projectName: String? = null,
-    @Json(name = "property_details") val propertyDetails: List<Detail?>? = null
+    @Json(name = "property_details") val propertyDetails: List<Detail>? = null
 ) {
     @JsonClass(generateAdapter = true)
     data class Address(
@@ -38,7 +38,22 @@ data class PropertyDetail(
     data class Detail(
         @Json(name = "label") val label: String? = null,
         @Json(name = "text") val text: String? = null
-    )
+    ) {
+        /**
+         * Available labels
+         */
+        @Suppress("unused")
+        companion object {
+            const val LABEL_PRICE = "Price/sqft"
+            const val LABEL_FLOOR_LEVEL = "Floor Level"
+            const val LABEL_NO_BEDROOMS = "No. of bedrooms"
+            const val LABEL_FACING = "Facing"
+            const val LABEL_BUILD_YEAR = "Built year"
+            const val LABEL_TENURE = "Tenure"
+            const val LABEL_PROPERTY_TYPE = "Property type"
+            const val LABEL_LAST_UPDATED = "Last updated"
+        }
+    }
 
     companion object {
         val EMPTY get() = PropertyDetail()

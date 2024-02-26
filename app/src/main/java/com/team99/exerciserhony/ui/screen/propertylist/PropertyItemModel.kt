@@ -36,7 +36,6 @@ data class PropertyItemModel(
 
     companion object {
         internal val MOCK
-            @Composable
             get() = PropertyItemModel(
                 imageUrl = "",
                 id = Random.nextInt(1..1000000),
@@ -53,10 +52,9 @@ data class PropertyItemModel(
             ).apply { isMocked = true }
 
         internal val MOCK_LIST
-            @Composable
             get() = listOf(MOCK, MOCK, MOCK)
 
-        fun parseEntity(property: Property): PropertyItemModel = with(property) {
+        fun parseEntity(entity: Property): PropertyItemModel = with(entity) {
             PropertyItemModel(
                 imageUrl = photo.orEmpty(),
                 id = id!!,

@@ -2,22 +2,34 @@ package com.team99.exerciserhony.ui.screen.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.team99.exerciserhony.ui.screen.propertydetail.PropertyDetailScreen
+import androidx.navigation.navArgument
+import com.team99.exerciserhony.ui.screen.propertydetail.PropertyDetailFragment
 import com.team99.exerciserhony.ui.screen.propertylist.PropertyListFragment
 
 @Composable
 fun MainNavigation(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = NavigationItem.PropertyList.route
+        startDestination = NavigationRoute.PropertyList.route
     ) {
-        composable(NavigationItem.PropertyList.route) {
+        composable(NavigationRoute.PropertyList.route) {
             PropertyListFragment(navController = navController)
         }
-        composable(NavigationItem.PropertyDetail.route) {
-            PropertyDetailScreen()
+        composable(
+            route = NavigationRoute.PropertyDetail.route,
+            arguments = listOf(
+                navArgument(NavigationArguments.ARG_PROPERTY_ID) {
+                    type = NavType.IntType
+                }
+            )
+        ) { backStackEntry ->
+            PropertyDetailFragment(
+                propId = backStackEntry.arguments?.getInt(NavigationArguments.ARG_PROPERTY_ID)!!,
+                navController = navController
+            )
         }
     }
 }
