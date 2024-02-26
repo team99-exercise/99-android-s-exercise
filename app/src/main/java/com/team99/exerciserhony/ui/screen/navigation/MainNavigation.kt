@@ -1,30 +1,20 @@
 package com.team99.exerciserhony.ui.screen.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.team99.exerciserhony.ui.screen.propertydetail.PropertyDetailScreen
-import com.team99.exerciserhony.ui.screen.propertylist.PropertyListScreen
+import com.team99.exerciserhony.ui.screen.propertylist.PropertyListFragment
 
 @Composable
-fun MainNavigation(
-    modifier: Modifier = Modifier,
-    navController: NavHostController,
-    startDestination: String = NavigationItem.PropertyList.route
-) {
+fun MainNavigation(navController: NavHostController) {
     NavHost(
-        modifier = modifier,
         navController = navController,
-        startDestination = startDestination
+        startDestination = NavigationItem.PropertyList.route
     ) {
         composable(NavigationItem.PropertyList.route) {
-            PropertyListScreen(
-                onOpenPropertyDetail = {
-                    navController.navigate(NavigationItem.PropertyDetail.route)
-                }
-            )
+            PropertyListFragment(navController = navController)
         }
         composable(NavigationItem.PropertyDetail.route) {
             PropertyDetailScreen()

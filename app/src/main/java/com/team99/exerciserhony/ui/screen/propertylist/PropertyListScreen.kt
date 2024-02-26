@@ -1,30 +1,45 @@
 package com.team99.exerciserhony.ui.screen.propertylist
 
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
+import com.team99.exerciserhony.ui.theme.Grey
 import com.team99.exerciserhony.ui.theme.Team99AndroidExerciseRhonyTheme
-import com.team99.exerciserhony.viewmodel.PropertyViewModel
 
 @Composable
 fun PropertyListScreen(
     modifier: Modifier = Modifier,
-    viewModel: PropertyViewModel = hiltViewModel(),
-    onOpenPropertyDetail: () -> Unit
+    list: List<PropertyItemModel>,
+    onClickItem: (Int) -> Unit
 ) {
-    viewModel.getPropertyList()
-    Text(
-        text = "Hello !",
-        modifier = modifier
-    )
+    Surface(color = Grey) {
+        LazyColumn(
+            modifier = modifier,
+        ) {
+            items(items = list) { item ->
+                PropertyListItem(model = item) { onClickItem(item.id) }
+            }
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewPropertyListFragment() {
+fun PreviewPropertyListScreen() {
     Team99AndroidExerciseRhonyTheme {
-        PropertyListScreen {}
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background,
+        ) {
+            PropertyListScreen(
+                list = PropertyItemModel.MOCK_LIST,
+                onClickItem = {}
+            )
+        }
     }
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.team99.exerciserhony.domain.entity.Property
 import com.team99.exerciserhony.domain.entity.PropertyDetail
 import com.team99.exerciserhony.domain.repository.PropertyRepository
+import com.team99.exerciserhony.ui.screen.propertylist.PropertyItemModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,7 +18,7 @@ class PropertyViewModel @Inject constructor(
     private val repository: PropertyRepository
 ) : ViewModel() {
 
-    private val _propertyList = MutableStateFlow(emptyList<Property>())
+    private val _propertyList = MutableStateFlow(emptyList<PropertyItemModel>())
     val propertyList = _propertyList.asStateFlow()
 
     private val _propertyDetail = MutableStateFlow(PropertyDetail.EMPTY)
@@ -25,12 +26,12 @@ class PropertyViewModel @Inject constructor(
 
     fun getPropertyList() {
         viewModelScope.launch {
-            repository.getPropertyList().collect {
+            repository.getPropertyList().collect { entity ->
                 Log.d(
                     "PropertyViewModel",
-                    "Property List fetched:\nsize: ${it.size}\ncontent [print only first]: ${it.firstOrNull()}"
+                    "Property List fetched:\nsize: ${entity.size}\ncontent [print only first]: ${entity.firstOrNull()}"
                 )
-                _propertyList.value = it
+                _propertyList.value = entity.map(PropertyItemModel::parseEntity)
             }
         }
     }
