@@ -17,7 +17,6 @@ proguard/
 *.apk
 
 app/manifest-merger-release-report.txt
-gradle.properties
 app/libs/Library/build/
 
 # Fabric/Crashlytics plugin
