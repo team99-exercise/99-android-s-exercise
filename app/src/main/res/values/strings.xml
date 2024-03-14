@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Team99 Exercise</string>
+    <string name="title_search_results">Search Results</string>
+    <string name="content_desc_listing_image">listing image</string>
+    <string name="dots">dots</string>
+    <string name="format_tenure">%d yrs</string>
+    <string name="format_bedrooms">%d Beds</string>
+    <string name="format_bathrooms">%d Baths</string>
+    <string name="format_area">%d sqft</string>
+    <string name="format_price">$%d</string>
+    <string name="format_price_per_month">$%d/mo</string>
+    <string name="view_on_map">View on map</string>
+    <string name="back_button">back button</string>
+    <string name="error">error</string>
+    <string name="error_desc">An error has occured. Please try again.</string>
+</resources>
