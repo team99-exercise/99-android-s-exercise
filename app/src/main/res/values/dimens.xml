@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_inner_padding">12dp</dimen>
+    <dimen name="search_result_margin">12dp</dimen>
+    <dimen name="listing_detail_horizontal_margin">16dp</dimen>
+    <dimen name="listing_detail_default_inner_padding">8dp</dimen>
+    <dimen name="listing_detail_bottom_padding">20dp</dimen>
+    <dimen name="listing_detail_property_detail_padding">4dp</dimen>
+    <dimen name="listing_detail_separator_top_padding">12dp</dimen>
+</resources>
