@@ -1,4 +1,4 @@
-# Team 99 - Mobile Exercise (Android or iOS)
+# Team 99 - Mobile Exercise (Android iOS)
 ​
 This is a fun exercise/challenge to help us assess the skill of candidates interested in joining the engineering team at 99.co. If you would like to attempt it, create your own fork and starting coding away!
 ​
@@ -21,6 +21,7 @@ You can implement the assignment using any libraries and architecture you want. 
 5. Use async tasks management (coroutine for Kotlin and Task async await for Swift)
 6. (Optional for additional point) Unit Testing.
 ​
+
 **Tips for intern:**
 1. Please submit a runnable project 
 2. Do as much as you can, if you can't implement some features, please leave a comment in the code to explain what you want to do.
@@ -91,6 +92,6 @@ Figma: https://www.figma.com/file/4ms9vSCpUcHRqqLTaVcbYY/Mobile-Team-Home-Assign
 ## Getting Started
 1. Create your own fork of this repository to get started.
 2. Create the android or iOS project in the root of the repository.
-3. Commit your work frequently with good Commit title and description so that we can follow your progress and see how you worked through this problem.
+3. Commit your work frequently with good commit title and description so that we can follow your progress and see how you worked through this problem.
 4. Once you've finished the challenge, grant ferryyuwono99, hashlin, syamsudotdev, funclosure, abimanyupramukti access to the fork as admin and send us an APK or IPA file that can be installed on devices.
 5. Add in any additional instructions in README we might need to setup the codebase on our local machines.
