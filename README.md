@@ -1,4 +1,4 @@
-# Team 99 - Android Exercise
+# Team 99 - Mobile Exercise (Android or iOS)
 ​
 This is a fun exercise/challenge to help us assess the skill of candidates interested in joining the engineering team at 99.co. If you would like to attempt it, create your own fork and starting coding away!
 ​
@@ -15,10 +15,11 @@ User will be pushed to this page after clicking listing in `Search Result Page`
 You can implement the assignment using any libraries and architecture you want. However, we have some requirements for you to follow.
 ​
 1. Follow the design in Figma as much as possible.
-2. Implement assignment in Kotlin
-3. (Optional for intern) Use coroutines for async tasks
-4. (Optional for intern) Use dependency injection framework
-5. (Optional) Unit Testing.
+2. Implement assignment in Kotlin or Swift
+3. Clean Architecture
+4. Use dependency injection framework
+5. Use async tasks management (coroutine for Kotlin and Task async await for Swift)
+6. (Optional for additional point) Unit Testing.
 ​
 **Tips for intern:**
 1. Please submit a runnable project 
@@ -89,7 +90,7 @@ Figma: https://www.figma.com/file/4ms9vSCpUcHRqqLTaVcbYY/Mobile-Team-Home-Assign
 ``` 
 ## Getting Started
 1. Create your own fork of this repository to get started.
-2. Create the android project in the root of the repository.
-3. commit your work frequently so that we can follow your progress and see how you worked through this problem.
-4. Once you've finished the challenge, grant shawn@shawnbaek.com myeiklin@gmail.com wangberlin2000@gmail.com funclosure@gmail.com and akqeelnawaz@windowslive.com access to the fork as admin and send us an APK file that can be installed on devices.
-5. Add in any additional instructions we might need to setup the codebase on our local machines.
+2. Create the android or iOS project in the root of the repository.
+3. Commit your work frequently with good Commit title and description so that we can follow your progress and see how you worked through this problem.
+4. Once you've finished the challenge, grant ferryyuwono99, hashlin, syamsudotdev, funclosure, abimanyupramukti access to the fork as admin and send us an APK or IPA file that can be installed on devices.
+5. Add in any additional instructions in README we might need to setup the codebase on our local machines.
