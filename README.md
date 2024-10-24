@@ -16,9 +16,10 @@ You can implement the assignment using any libraries and architecture you want. 
 ​
 1. Follow the design in Figma as much as possible.
 2. Implement assignment in Kotlin or Swift
-3. Clean Architecture
-4. Use dependency injection framework
+3. MVVM Pattern or Clean Architecture
+4. Jetpack Compose or XML ViewBinding for Android and UIKit Storyboard or Swift UI for iOS
 5. Use async tasks management (coroutine for Kotlin and Task async await for Swift)
+7. (Optional for additional point) Use dependency injection framework
 6. (Optional for additional point) Unit Testing.
 ​
 
@@ -32,9 +33,10 @@ Figma: https://www.figma.com/file/4ms9vSCpUcHRqqLTaVcbYY/Mobile-Team-Home-Assign
 <img width="418" alt="Screenshot 2021-10-04 at 1 24 10 AM" src="https://user-images.githubusercontent.com/7981907/135764791-3dc209b1-5da9-4bde-9371-90cc289d5349.png">
 ​
 ## Endpoints
-- [Search Result Page](https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/listings.json)
-- [Listing Detail Page](https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/details/0.json)
-​
+- Search Result Page: https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/listings.json
+- Listing Detail Page: https://ninetyninedotco-b7299.asia-southeast1.firebasedatabase.app/details/0.json
+
+​Example result from endpoint:
 ```
 [ {
   "address" : {
