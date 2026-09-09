@@ -93,7 +93,7 @@ Figma: https://www.figma.com/file/4ms9vSCpUcHRqqLTaVcbYY/Mobile-Team-Home-Assign
 ``` 
 ## Getting Started
 1. Create your own fork of this repository to get started.
-2. Create the android or iOS project in the root of the repository.
+2. Create the native android or iOS or flutter project in the root of the repository.
 3. Commit your work frequently with good commit title and description so that we can follow your progress and see how you worked through this problem.
-4. Once you've finished the challenge, grant ferryyuwono99, hashlin, syamsudotdev, funclosure, abimanyupramukti access to the fork as admin and send us an APK or IPA file that can be installed on devices.
+4. Once you've finished the challenge, grant ferryyuwono99, hashlin, syamsudotdev, abimanyupramukti, andhikahf99 access to the fork as admin and send us an APK or IPA file that can be installed on devices.
 5. Add in any additional instructions in README we might need to setup the codebase on our local machines.
